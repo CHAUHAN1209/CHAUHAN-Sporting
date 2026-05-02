@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Your Cart — CHAUHAN Sporting</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* ── PAGE HEADER ── */
+    .cart-page-header {
+      padding: 140px 0 60px;
+      background: var(--dark, #0a0a0a);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .cart-page-header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 60% 80% at 50% 100%, rgba(196,158,78,.10) 0%, transparent 70%);
+    }
+    .cart-page-header .section-label {
+      color: var(--gold, #c49e4e);
+      font-size: .65rem;
+      letter-spacing: .35em;
+      text-transform: uppercase;
+      margin-bottom: .8rem;
+    }
+    .cart-page-header h1 {
+      font-family: var(--font-head, 'Playfair Display', serif);
+      font-size: clamp(2rem, 5vw, 3rem);
+      color: var(--off-white, #f5f0e8);
+      margin: 0;
+    }
+    .cart-page-header h1 em { color: var(--gold, #c49e4e); font-style: italic; }
+
+    /* ── LAYOUT ── */
+    .cart-section {
+      background: var(--charcoal, #111);
+      padding: 60px 0 100px;
+      min-height: 60vh;
+    }
+
+    /* ── CART TABLE BOX ── */
+    .cart-box {
+      background: var(--dark, #0a0a0a);
+      border: 1px solid rgba(196,158,78,.18);
+      border-radius: 4px;
+    }
+    .cart-box-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.1rem 1.5rem;
+      border-bottom: 1px solid rgba(196,158,78,.12);
+    }
+    .cart-box-header span {
+      font-size: .65rem;
+      letter-spacing: .25em;
+      text-transform: uppercase;
+      color: var(--gold, #c49e4e);
+    }
+    .btn-clear-cart {
+      background: none;
+      border: none;
+      color: var(--muted, #777);
+      font-size: .78rem;
+      cursor: pointer;
+      font-family: inherit;
+      transition: color .2s;
+      letter-spacing: .05em;
+    }
+    .btn-clear-cart:hover { color: #e05c3a; }
+
+    /* ── CART ITEM ROW ── */
+    .cart-item-row {
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+      padding: 1.3rem 1.5rem;
+      border-bottom: 1px solid rgba(196,158,78,.08);
+      transition: background .2s;
+      animation: rowIn .3s ease;
+    }
+    .cart-item-row:last-child { border-bottom: none; }
+    .cart-item-row:hover { background: rgba(196,158,78,.04); }
+
+    @keyframes rowIn {
+      from { opacity: 0; transform: translateX(-10px); }
+      to   { opacity: 1; transform: translateX(0); }
+    }
+
+    .cart-item-thumb {
+      width: 72px;
+      height: 72px;
+      object-fit: cover;
+      border-radius: 3px;
+      border: 1px solid rgba(196,158,78,.15);
+      flex-shrink: 0;
+      background: var(--charcoal, #111);
+    }
+    .cart-item-thumb-placeholder {
+      width: 72px;
+      height: 72px;
+      border-radius: 3px;
+      border: 1px solid rgba(196,158,78,.15);
+      flex-shrink: 0;
+      background: var(--charcoal, #111);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--gold, #c49e4e);
+      font-size: 1.6rem;
+    }
+
+    .cart-item-info { flex: 1; min-width: 0; }
+    .cart-item-name {
+      font-family: var(--font-head, 'Playfair Display', serif);
+      font-size: .95rem;
+      color: var(--off-white, #f5f0e8);
+      margin-bottom: .15rem;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .cart-item-grade {
+      font-size: .68rem;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--gold, #c49e4e);
+      margin-bottom: .3rem;
+    }
+    .cart-item-unit-price {
+      font-size: .8rem;
+      color: var(--muted, #777);
+    }
+
+    /* qty control */
+    .qty-wrap {
+      display: flex;
+      align-items: center;
+      border: 1px solid rgba(196,158,78,.25);
+      border-radius: 3px;
+      overflow: hidden;
+    }
+    .qty-btn {
+      background: rgba(196,158,78,.08);
+      border: none;
+      color: var(--gold, #c49e4e);
+      width: 28px;
+      height: 28px;
+      font-size: 1rem;
+      line-height: 1;
+      cursor: pointer;
+      transition: background .15s;
+      font-family: inherit;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .qty-btn:hover { background: rgba(196,158,78,.2); }
+    .qty-num {
+      width: 32px;
+      text-align: center;
+      font-size: .88rem;
+      color: var(--off-white, #f5f0e8);
+      background: transparent;
+      border: none;
+      outline: none;
+      font-family: inherit;
+    }
+
+    .cart-item-total {
+      font-family: var(--font-head, 'Playfair Display', serif);
+      font-size: 1rem;
+      color: var(--gold, #c49e4e);
+      min-width: 80px;
+      text-align: right;
+    }
+
+    .btn-remove-item {
+      background: none;
+      border: none;
+      color: var(--muted, #777);
+      font-size: .85rem;
+      cursor: pointer;
+      padding: 4px 6px;
+      transition: color .2s;
+      line-height: 1;
+    }
+    .btn-remove-item:hover { color: #e05c3a; }
+
+    /* ── EMPTY STATE ── */
+    .cart-empty {
+      padding: 5rem 2rem;
+      text-align: center;
+      display: none;
+    }
+    .cart-empty i { font-size: 3.5rem; color: rgba(196,158,78,.3); margin-bottom: 1.2rem; display: block; }
+    .cart-empty p { color: var(--muted, #777); font-size: .9rem; margin-bottom: 1.8rem; }
+
+    /* ── SUMMARY BOX ── */
+    .summary-box {
+      background: var(--dark, #0a0a0a);
+      border: 1px solid rgba(196,158,78,.18);
+      border-radius: 4px;
+      padding: 1.6rem;
+      position: sticky;
+      top: 86px;
+    }
+    .summary-heading {
+      font-family: var(--font-head, 'Playfair Display', serif);
+      font-size: 1.1rem;
+      color: var(--off-white, #f5f0e8);
+      margin-bottom: 1.4rem;
+    }
+    .summary-heading em { color: var(--gold, #c49e4e); font-style: italic; }
+
+    .summary-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: .82rem;
+      color: var(--muted, #777);
+      margin-bottom: .85rem;
+      letter-spacing: .02em;
+    }
+    .summary-row .val { color: var(--off-white, #f5f0e8); font-weight: 500; }
+    .summary-row .val.free { color: var(--gold, #c49e4e); }
+    .summary-row .val.discount { color: #4ecb71; }
+
+    .summary-divider {
+      border: none;
+      border-top: 1px solid rgba(196,158,78,.12);
+      margin: 1.1rem 0;
+    }
+    .summary-total {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 1.4rem;
+    }
+    .summary-total .lbl {
+      font-size: .72rem;
+      letter-spacing: .25em;
+      text-transform: uppercase;
+      color: var(--muted, #777);
+    }
+    .summary-total .amt {
+      font-family: var(--font-head, 'Playfair Display', serif);
+      font-size: 1.5rem;
+      color: var(--gold, #c49e4e);
+    }
+
+    /* promo */
+    .promo-wrap {
+      display: flex;
+      gap: .5rem;
+      margin-bottom: .5rem;
+    }
+    .promo-input {
+      flex: 1;
+      background: var(--charcoal, #111);
+      border: 1px solid rgba(196,158,78,.2);
+      border-radius: 3px;
+      padding: .5rem .85rem;
+      font-size: .82rem;
+      color: var(--off-white, #f5f0e8);
+      font-family: inherit;
+      outline: none;
+      transition: border-color .2s;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+    }
+    .promo-input::placeholder { text-transform: none; color: var(--muted, #777); letter-spacing: 0; }
+    .promo-input:focus { border-color: var(--gold, #c49e4e); }
+    .btn-promo {
+      background: rgba(196,158,78,.1);
+      border: 1px solid rgba(196,158,78,.25);
+      border-radius: 3px;
+      color: var(--gold, #c49e4e);
+      font-size: .78rem;
+      font-family: inherit;
+      padding: .5rem .9rem;
+      cursor: pointer;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      transition: background .2s;
+    }
+    .btn-promo:hover { background: rgba(196,158,78,.2); }
+
+    .promo-msg {
+      font-size: .76rem;
+      margin-bottom: 1rem;
+      min-height: 1.1rem;
+      letter-spacing: .04em;
+    }
+    .promo-msg.ok  { color: #4ecb71; }
+    .promo-msg.err { color: #e05c3a; }
+
+    .btn-checkout {
+      display: block;
+      width: 100%;
+      text-align: center;
+      padding: .85rem 1rem;
+      background: linear-gradient(135deg, var(--gold, #c49e4e) 0%, #a07830 100%);
+      color: #0a0a0a;
+      font-weight: 700;
+      font-size: .82rem;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      border: none;
+      border-radius: 2px;
+      cursor: pointer;
+      font-family: inherit;
+      transition: opacity .2s, transform .15s;
+    }
+    .btn-checkout:hover { opacity: .9; transform: translateY(-1px); }
+    .btn-checkout:active { transform: translateY(0); }
+
+    .secure-note {
+      text-align: center;
+      color: var(--muted, #777);
+      font-size: .72rem;
+      margin-top: .9rem;
+      letter-spacing: .05em;
+    }
+    .secure-note i { color: var(--gold, #c49e4e); margin-right: .3rem; }
+
+    .btn-continue {
+      display: inline-block;
+      font-size: .72rem;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--muted, #777);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(196,158,78,.2);
+      padding-bottom: 1px;
+      transition: color .2s, border-color .2s;
+      margin-top: .9rem;
+    }
+    .btn-continue:hover { color: var(--gold, #c49e4e); border-color: var(--gold, #c49e4e); }
+
+    /* ── TOAST ── */
+    .cart-toast-local {
+      position: fixed;
+      bottom: 2.5rem;
+      left: 50%;
+      transform: translateX(-50%) translateY(80px);
+      background: var(--dark, #0a0a0a);
+      border: 1px solid rgba(196,158,78,.35);
+      color: var(--off-white, #f5f0e8);
+      padding: .65rem 1.4rem;
+      border-radius: 2px;
+      font-size: .82rem;
+      letter-spacing: .08em;
+      transition: transform .35s cubic-bezier(.22,1,.36,1);
+      z-index: 9999;
+      pointer-events: none;
+      white-space: nowrap;
+    }
+    .cart-toast-local i { color: var(--gold, #c49e4e); margin-right: .4rem; }
+    .cart-toast-local.show { transform: translateX(-50%) translateY(0); }
+
+    @media (max-width: 767px) {
+      .summary-box { position: static; margin-top: 1.5rem; }
+      .cart-item-total { min-width: 60px; font-size: .88rem; }
+      .cart-item-row { flex-wrap: wrap; }
+    }
+
+    /* Fallback for btn-gold if style.css is unavailable */
+    .btn-gold {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: .7rem 2rem;
+      background: linear-gradient(135deg, var(--gold,#c49e4e) 0%, #a07830 100%);
+      color: #0a0a0a;
+      font-weight: 700;
+      font-size: .78rem;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border: none;
+      border-radius: 2px;
+      cursor: pointer;
+      font-family: inherit;
+      transition: opacity .2s, transform .15s;
+    }
+    .btn-gold:hover { opacity: .85; transform: translateY(-2px); color: #0a0a0a; }
+  </style>
+</head>
+<body>
+
+<div class="cursor"></div>
+<div class="cursor-follower"></div>
+<div class="scroll-progress"></div>
+
+<!-- ══════════ NAVBAR ══════════ -->
+<nav class="navbar navbar-expand-lg fixed-top">
+  <div class="container">
+    <a class="navbar-brand" href="index.html">
+      <span>CHAUHAN Sporting</span>
+      <span class="brand-tagline">Est. 1998 · Handcrafted Excellence</span>
+    </a>
+    <div class="d-flex align-items-center gap-3 order-lg-last">
+      <span class="cart-icon" id="cart-icon-page" style="cursor:default;" onclick="event.stopImmediatePropagation(); return false;">
+        <i class="bi bi-bag"></i>
+        <span class="cart-count" id="nav-cart-count">0</span>
+      </span>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </div>
+    <div class="collapse navbar-collapse" id="navMenu">
+      <ul class="navbar-nav ms-auto align-items-lg-center">
+        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+        <li class="nav-item"><a class="nav-link" href="collection.html">Collection</a></li>
+        <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+        <li class="nav-item"><a class="nav-link" href="login.html">Login</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- ══════════ PAGE HEADER ══════════ -->
+<div class="cart-page-header">
+  <p class="section-label">Your Selection</p>
+  <h1>Your <em>Cart</em></h1>
+</div>
+
+<!-- ══════════ CART SECTION ══════════ -->
+<section class="cart-section">
+  <div class="container">
+    <div class="row g-4">
+
+      <!-- Items -->
+      <div class="col-lg-8">
+        <div class="cart-box">
+          <div class="cart-box-header">
+            <span id="item-count-label">— items</span>
+            <button class="btn-clear-cart" onclick="clearCart()">Remove All</button>
+          </div>
+          <div id="cart-list"></div>
+          <div class="cart-empty" id="cart-empty">
+            <i class="bi bi-bag-x"></i>
+            <p>Your cart is empty.<br>Add a bat to get started.</p>
+            <a href="collection.html" class="btn-gold ripple-btn"><span>Browse Collection</span></a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Summary -->
+      <div class="col-lg-4">
+        <div class="summary-box">
+          <p class="summary-heading">Order <em>Summary</em></p>
+
+          <div class="summary-row">
+            <span>Subtotal</span>
+            <span class="val" id="sum-subtotal">₹0</span>
+          </div>
+          <div class="summary-row">
+            <span>Shipping</span>
+            <span class="val" id="sum-shipping">₹0</span>
+          </div>
+          <div class="summary-row" id="sum-discount-row" style="display:none">
+            <span>Promo Discount</span>
+            <span class="val discount" id="sum-discount">—</span>
+          </div>
+
+          <hr class="summary-divider">
+
+          <div class="summary-total">
+            <span class="lbl">Total</span>
+            <span class="amt" id="sum-total">₹0</span>
+          </div>
+
+          <div class="promo-wrap">
+            <input type="text" class="promo-input" id="promo-input" placeholder="Promo code"
+              onkeydown="if(event.key==='Enter') applyPromo()" />
+            <button class="btn-promo" onclick="applyPromo()">Apply</button>
+          </div>
+          <p class="promo-msg" id="promo-msg"></p>
+
+          <button class="btn-checkout" onclick="goCheckout()">
+            <i class="bi bi-lock-fill me-2"></i>Proceed to Checkout
+          </button>
+
+          <p class="secure-note">
+            <i class="bi bi-shield-check-fill"></i>Secure · SSL Encrypted · Made in India
+          </p>
+
+          <div class="text-center">
+            <a href="collection.html" class="btn-continue">← Continue Shopping</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ FOOTER ══════════ -->
+<footer>
+  <div class="container">
+    <div class="row g-5">
+      <div class="col-lg-4">
+        <div class="footer-brand">CHAUHAN<span> Sporting</span></div>
+        <div class="footer-tagline mb-4">Crafted for Champions · Est. 1998</div>
+        <p style="font-size:.82rem;color:var(--muted);line-height:1.8;max-width:300px;">
+          Handcrafted premium cricket bats from the finest English willow. Your game deserves the best.
+        </p>
+        <div class="mt-4">
+         <a href="https://www.instagram.com/_.chauhan._111/" target="_blank" class="social-icon"><i class="bi bi-instagram"></i></a>
+              <a href="https://www.facebook.com/" target="_blank" class="social-icon"><i class="bi bi-facebook"></i></a>
+              <a href="https://www.linkedin.com/in/shivanand-singh-827114405/" target="_blank" class="social-icon"><i class="bi bi-linkedin"></i></a>
+              <a href="https://www.youtube.com/@chennaiipl" target="_blank" class="social-icon"><i class="bi bi-youtube"></i></a>
+          </div>
+      </div>
+      <div class="col-6 col-lg-2 footer-links">
+        <h6>Navigation</h6>
+        <a href="index.html">Home</a>
+        <a href="about.html">About Us</a>
+        <a href="collection.html">Collection</a>
+        <a href="contact.html">Contact</a>
+        <a href="login.html">Login</a>
+      </div>
+      <div class="col-6 col-lg-3 footer-links">
+        <h6>Collection</h6>
+        <a href="collection.html">English Willow Bats</a>
+        <a href="collection.html">Kashmir Willow</a>
+        <a href="collection.html">Limited Editions</a>
+        <a href="collection.html">Junior Range</a>
+        <a href="collection.html">Accessories</a>
+      </div>
+      <div class="col-lg-3 footer-links">
+        <h6>Contact</h6>
+        <a href="#"><i class="bi bi-geo-alt me-2"></i>12 Bat-maker's Lane, Jamshedpur, Jharkhand</a>
+        <a href="#"><i class="bi bi-telephone me-2"></i>+91 12091 11718</a>
+        <a href="#"><i class="bi bi-envelope me-2"></i>info@chauhansporting.com</a>
+      </div>
+    </div>
+    <div class="footer-bottom text-center">
+      <p>© 2026 CHAUHAN Sporting. All Rights Reserved. Premium Cricket Bats. Made in India.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- Toast -->
+<div class="cart-toast-local" id="local-toast">
+  <i class="bi bi-bag-check-fill"></i>
+  <span id="local-toast-msg">Done</span>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="main.js"></script>
+
+<script>
+/* ═══════════════════════════════════════════
+   CHAUHAN SPORTING — CART ENGINE
+   localStorage key: 'chauhanCart'
+   addToCart() in main.js must use this key.
+═══════════════════════════════════════════ */
+// Use var to avoid redeclaration conflict with main.js
+var CART_KEY  = 'chauhanCart';
+var FREE_SHIP = 15000;
+var SHIP_FEE  = 499;
+var PROMOS    = { 'CHAMPION10': 10, 'FIRST15': 15, 'WILLOW20': 20 };
+
+let discountPct = 0;
+
+function getCart() { return JSON.parse(localStorage.getItem(CART_KEY) || '[]'); }
+function saveCart(c) { localStorage.setItem(CART_KEY, JSON.stringify(c)); render(); }
+
+function changeQty(id, d) {
+  const cart = getCart();
+  const item = cart.find(i => i.id === id);
+  if (item) { item.qty = Math.max(1, item.qty + d); saveCart(cart); }
+}
+
+function removeItem(id) { saveCart(getCart().filter(i => i.id !== id)); showToast('Item removed'); }
+
+function clearCart() {
+  if (!getCart().length) return;
+  if (confirm('Remove all items from your cart?')) { saveCart([]); showToast('Cart cleared'); }
+}
+
+function applyPromo() {
+  const code = document.getElementById('promo-input').value.trim().toUpperCase();
+  const msg  = document.getElementById('promo-msg');
+  if (PROMOS[code]) {
+    discountPct = PROMOS[code];
+    msg.className = 'promo-msg ok';
+    msg.textContent = `✓ ${discountPct}% discount applied!`;
+  } else {
+    discountPct = 0;
+    msg.className = 'promo-msg err';
+    msg.textContent = '✕ Invalid promo code.';
+  }
+  render();
+}
+
+function goCheckout() {
+  if (!getCart().length) { showToast('Your cart is empty!'); return; }
+  showToast('Redirecting to checkout…');
+  // 👉 Replace the line below with your checkout page redirect:
+  // window.location.href = 'checkout.html';
+  setTimeout(() => {
+    alert('Checkout page coming soon!\n\nReplace goCheckout() in cart.html with your checkout URL.');
+  }, 600);
+}
+
+function render() {
+  const cart    = getCart();
+  const listEl  = document.getElementById('cart-list');
+  const emptyEl = document.getElementById('cart-empty');
+  const countEl = document.getElementById('item-count-label');
+  const navEl   = document.getElementById('nav-cart-count');
+
+  const totalQty = cart.reduce((s, i) => s + i.qty, 0);
+  if (navEl) navEl.textContent = totalQty;
+
+  listEl.innerHTML = '';
+
+  if (!cart.length) {
+    emptyEl.style.display = 'block';
+    countEl.textContent = '0 items';
+    updateSummary(0);
+    return;
+  }
+
+  emptyEl.style.display = 'none';
+  countEl.textContent = `${totalQty} item${totalQty !== 1 ? 's' : ''}`;
+
+  cart.forEach(item => {
+    const row = document.createElement('div');
+    row.className = 'cart-item-row';
+    const thumb = item.img
+      ? `<img class="cart-item-thumb" src="${item.img}" alt="${item.name}"
+             onerror="this.outerHTML='<div class=cart-item-thumb-placeholder><i class=\\'bi bi-trophy\\'></i></div>'">`
+      : `<div class="cart-item-thumb-placeholder"><i class="bi bi-trophy"></i></div>`;
+
+    row.innerHTML = `
+      ${thumb}
+      <div class="cart-item-info">
+        <div class="cart-item-name">${item.name}</div>
+        <div class="cart-item-grade">${item.grade || 'Grade 1 English Willow'}</div>
+        <div class="cart-item-unit-price">₹${Number(item.price).toLocaleString('en-IN')} each</div>
+      </div>
+      <div class="qty-wrap">
+        <button class="qty-btn" onclick="changeQty('${item.id}',-1)">−</button>
+        <span class="qty-num">${item.qty}</span>
+        <button class="qty-btn" onclick="changeQty('${item.id}',1)">+</button>
+      </div>
+      <div class="cart-item-total">₹${(item.price * item.qty).toLocaleString('en-IN')}</div>
+      <button class="btn-remove-item" onclick="removeItem('${item.id}')" title="Remove">
+        <i class="bi bi-x-lg"></i>
+      </button>`;
+    listEl.appendChild(row);
+  });
+
+  updateSummary(cart.reduce((s, i) => s + i.price * i.qty, 0));
+}
+
+function updateSummary(subtotal) {
+  const shipping = subtotal > 0 && subtotal < FREE_SHIP ? SHIP_FEE : 0;
+  const discount = Math.round(subtotal * discountPct / 100);
+  const total    = subtotal + shipping - discount;
+  const shipEl   = document.getElementById('sum-shipping');
+  const discRow  = document.getElementById('sum-discount-row');
+
+  document.getElementById('sum-subtotal').textContent = `₹${subtotal.toLocaleString('en-IN')}`;
+  document.getElementById('sum-total').textContent    = `₹${total.toLocaleString('en-IN')}`;
+
+  if (shipping === 0 && subtotal > 0) {
+    shipEl.textContent = 'Free 🏏';
+    shipEl.className   = 'val free';
+  } else {
+    shipEl.textContent = subtotal === 0 ? '₹0' : `₹${shipping.toLocaleString('en-IN')}`;
+    shipEl.className   = 'val';
+  }
+
+  if (discountPct && discount > 0) {
+    discRow.style.display = 'flex';
+    document.getElementById('sum-discount').textContent = `−₹${discount.toLocaleString('en-IN')} (${discountPct}%)`;
+  } else {
+    discRow.style.display = 'none';
+  }
+}
+
+let toastTimer;
+function showToast(msg) {
+  const t = document.getElementById('local-toast');
+  document.getElementById('local-toast-msg').textContent = msg;
+  t.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => t.classList.remove('show'), 2800);
+}
+
+// Run render after DOM is ready
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', render);
+} else {
+  render();
+}
+</script>
+</body>
+</html>

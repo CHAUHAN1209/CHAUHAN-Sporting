@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CHAUHAN Sporting — Premium Cricket Bats for Champions</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<!-- Loader -->
+<div id="loader">
+  <div class="loader-brand">CHAUHAN<span style="color:var(--off-white);font-weight:300"> Sporting</span></div>
+  <div class="loader-bar"><div class="loader-fill"></div></div>
+</div>
+
+<!-- Cursor -->
+<div class="cursor"></div>
+<div class="cursor-follower"></div>
+<!-- Scroll Progress -->
+<div class="scroll-progress"></div>
+
+<!-- ══════════ NAVBAR ══════════ -->
+<nav class="navbar navbar-expand-lg fixed-top">
+  <div class="container">
+    <a class="navbar-brand" href="index.html">
+      <span>CHAUHAN Sporting</span>
+      <span class="brand-tagline">Est. 1998 · Handcrafted Excellence</span>
+    </a>
+    <div class="d-flex align-items-center gap-3 order-lg-last">
+      <span class="cart-icon">
+        <i class="bi bi-bag"></i>
+        <span class="cart-count">0</span>
+      </span>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </div>
+    <div class="collapse navbar-collapse" id="navMenu">
+      <ul class="navbar-nav ms-auto align-items-lg-center">
+        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+        <li class="nav-item"><a class="nav-link" href="collection.html">Collection</a></li>
+        <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+        <li class="nav-item"><a class="nav-link" href="login.html">Login</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- ══════════ HERO ══════════ -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-stadium"></div>
+  <div class="container hero-content">
+    <div class="row">
+      <div class="col-lg-7">
+        <div class="hero-label">Since 1998 · Limited Edition</div>
+        <h1>
+          Premium Cricket Bats
+          <em>for Champions</em>
+        </h1>
+        <p class="hero-sub">
+          Every blade tells a story of unmatched craftsmanship. 
+          Forged from Grade 1 English willow, engineered for glory.
+        </p>
+        <div class="hero-btns">
+          <a href="collection.html" class="btn-gold ripple-btn"><span>Explore Collection</span></a>
+          <a href="collection.html" class="btn-outline-gold ripple-btn"><span>Shop Now</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Floating bat -->
+  <div class="hero-visual d-none d-lg-block">
+    <img src="ad.png"
+         onerror="this.src=''"
+         alt="Premium Cricket Bat" class="hero-bat-img" />
+  </div>
+
+</section>
+
+<!-- ══════════ FEATURES STRIP ══════════ -->
+<section class="features-strip">
+  <div class="container">
+    <div class="row g-4">
+      <div class="col-6 col-md-3">
+        <div class="feature-item fade-up">
+          <span class="feature-icon"><i class="bi bi-award"></i></span>
+          <div class="feature-title">Grade 1 Willow</div>
+          <p class="feature-desc">Premium English willow sourced from the finest willow beds in England.</p>
+        </div>
+      </div>
+      <div class="col-6 col-md-3">
+        <div class="feature-item fade-up">
+          <span class="feature-icon"><i class="bi bi-hand-index-thumb"></i></span>
+          <div class="feature-title">Handcrafted</div>
+          <p class="feature-desc">Each bat shaped by master craftsmen with decades of experience.</p>
+        </div>
+      </div>
+      <div class="col-6 col-md-3">
+        <div class="feature-item fade-up">
+          <span class="feature-icon"><i class="bi bi-truck"></i></span>
+          <div class="feature-title">Free Delivery</div>
+          <p class="feature-desc">Complimentary worldwide shipping on all orders above ₹15,000.</p>
+        </div>
+      </div>
+      <div class="col-6 col-md-3">
+        <div class="feature-item fade-up">
+          <span class="feature-icon"><i class="bi bi-shield-check"></i></span>
+          <div class="feature-title">2-Year Warranty</div>
+          <p class="feature-desc">Comprehensive warranty on every bat against manufacturing defects.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ STATS ══════════ -->
+<section style="background:var(--dark);padding:60px 0;border-top:1px solid rgba(196,158,78,.1);border-bottom:1px solid rgba(196,158,78,.1);">
+  <div class="container">
+    <div class="row g-4 text-center">
+      <div class="col-6 col-md-3 fade-up">
+        <div style="font-family:var(--font-head,'Playfair Display',serif);font-size:2.4rem;color:var(--gold,#c49e4e);">
+          <span data-count="25" data-suffix="+">0+</span>
+        </div>
+        <div style="font-size:.65rem;letter-spacing:.3em;text-transform:uppercase;color:var(--muted,#777);margin-top:.4rem;">Years of Craft</div>
+      </div>
+      <div class="col-6 col-md-3 fade-up">
+        <div style="font-family:var(--font-head,'Playfair Display',serif);font-size:2.4rem;color:var(--gold,#c49e4e);">
+          <span data-count="10000" data-suffix="+">0+</span>
+        </div>
+        <div style="font-size:.65rem;letter-spacing:.3em;text-transform:uppercase;color:var(--muted,#777);margin-top:.4rem;">Bats Crafted</div>
+      </div>
+      <div class="col-6 col-md-3 fade-up">
+        <div style="font-family:var(--font-head,'Playfair Display',serif);font-size:2.4rem;color:var(--gold,#c49e4e);">
+          <span data-count="120" data-suffix="+">0+</span>
+        </div>
+        <div style="font-size:.65rem;letter-spacing:.3em;text-transform:uppercase;color:var(--muted,#777);margin-top:.4rem;">Pro Players</div>
+      </div>
+      <div class="col-6 col-md-3 fade-up">
+        <div style="font-family:var(--font-head,'Playfair Display',serif);font-size:2.4rem;color:var(--gold,#c49e4e);">
+          <span data-count="48" data-suffix=" Countries">0</span>
+        </div>
+        <div style="font-size:.65rem;letter-spacing:.3em;text-transform:uppercase;color:var(--muted,#777);margin-top:.4rem;">Delivered Across</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ SHOWCASE ══════════ -->
+<section class="showcase">
+  <div class="container">
+    <div class="row align-items-center g-5 mb-5">
+      <div class="col-lg-6">
+        <div class="showcase-img-wrap fade-in">
+          <img src="match.jpg"
+               onerror="this.src=''" alt="Cricket Craftsmanship" />
+          <div class="showcase-badge">NEW SEASON 2026</div>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="fade-up">
+          <p class="section-label">Our Heritage</p>
+          <h2 class="section-title">Crafted for the<br><em>Finest Players</em></h2>
+          <div class="gold-divider left"></div>
+          <p class="mt-4" style="color:var(--muted);line-height:1.9;font-size:0.88rem;">
+            Since 1998, CHAUHAN Sporting has been synonymous with excellence in cricket bat manufacturing. 
+            Every blade that leaves our workshop carries the legacy of a quarter-century of mastery.
+          </p>
+          <p class="mt-3" style="color:var(--muted);line-height:1.9;font-size:0.88rem;">
+            Our craftsmen — trained over generations — select only the finest clefts, press them to perfection, 
+            and finish every surface with an artisan's touch.
+          </p>
+          <a href="about.html" class="btn-outline-gold ripple-btn mt-4"><span>Our Story</span></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="row align-items-center g-5">
+      <div class="col-lg-6 order-lg-2">
+        <div class="showcase-img-wrap fade-in">
+          <img src="r.webp"
+               onerror="this.src=''" alt="English Willow" />
+          <div class="showcase-badge">ENGLISH WILLOW</div>
+        </div>
+      </div>
+      <div class="col-lg-6 order-lg-1">
+        <div class="fade-up">
+          <p class="section-label">Premium Materials</p>
+          <h2 class="section-title">The Wood of<br><em>Champions</em></h2>
+          <div class="gold-divider left"></div>
+          <p class="mt-4" style="color:var(--muted);line-height:1.9;font-size:0.88rem;">
+            We source exclusively from Grade 1 English willow — lighter, more responsive, 
+            with superior natural grain density. The result? Maximum power, minimal weight.
+          </p>
+          <a href="collection.html" class="btn-gold ripple-btn mt-4"><span>Shop Collection</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ FEATURED PRODUCTS ══════════ -->
+<section class="py-5" style="background:var(--charcoal);padding:100px 0!important;">
+  <div class="container">
+    <div class="text-center mb-5 fade-up">
+      <p class="section-label">Finest Selections</p>
+      <h2 class="section-title">Featured <em>Collection</em></h2>
+      <div class="gold-divider"></div>
+    </div>
+    <div class="row g-4">
+      <!-- Card 1 -->
+      <div class="col-md-6 col-lg-4 fade-up">
+        <div class="bat-card" onclick="openBatModal({
+          name:'BAS Vampire MSD Edition',
+          img:'bas.jpg',
+          price:45999,grade:'Grade 1 English Willow',
+          wood:'English Willow - Grade 1',weight:'1.17–1.19 kg',
+          grip:'Octopus Premium Grip',length:'86 cm',
+          desc:'Tournament-grade bat with concave profile and natural edge swell. Preferred by international cricketers.'
+        })">
+          <div class="bat-overlay"><button class="btn-quick-view">Quick View</button></div>
+          <div class="bat-img-wrap">
+            <div class="bat-badge">Best Seller</div>
+            <img src="bas.jpg" alt="Elite Pro" />
+          </div>
+          <div class="bat-info">
+            <div class="bat-grade">Grade 1 English Willow</div>
+            <div class="bat-name">BAS Vampire MSD Edition</div>
+            <div class="bat-specs">Full profile · Natural edge · Tournament grade</div>
+            <div class="bat-footer">
+              <div class="bat-price"><span class="currency">₹</span>45,999</div>
+              <button class="btn-add-cart ripple-btn" onclick="event.stopPropagation();addToCart('BAS Vampire MSD Edition',45999,'bas.jpg','Grade 1 English Willow')">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Card 2 -->
+      <div class="col-md-6 col-lg-4 fade-up">
+        <div class="bat-card" onclick="openBatModal({
+          name:'Sg KLR 1',
+          img:'klr.jpeg',
+          price:38500,grade:'Grade 1 English Willow',
+          wood:'English Willow - Grade 1',weight:'1.15–1.17 kg',
+          grip:'Round Premium Grip',length:'85.5 cm',
+          desc:'A heritage design with modern performance engineering. The Sg KLR 1 carries forward our founding vision.'
+        })">
+          <div class="bat-overlay"><button class="btn-quick-view">Quick View</button></div>
+          <div class="bat-img-wrap">
+            <div class="bat-badge">New Arrival</div>
+            <img src="klr.jpeg" alt="Dynasty" />
+          </div>
+          <div class="bat-info">
+            <div class="bat-grade">Grade 1 English Willow</div>
+            <div class="bat-name">Sg KLR 1</div>
+            <div class="bat-specs">Heritage design · Round grip · High spine</div>
+            <div class="bat-footer">
+              <div class="bat-price"><span class="currency">₹</span>38,500</div>
+              <button class="btn-add-cart ripple-btn" onclick="event.stopPropagation();addToCart('Sg KLR 1',38500,'klr.jpeg','Grade 1 English Willow')">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Card 3 -->
+      <div class="col-md-6 col-lg-4 fade-up">
+        <div class="bat-card" onclick="openBatModal({
+          name:'Sg Sunny 70 Years',
+          img:'sunny 70.webp',
+          price:52000,grade:'Grade 1 English Willow',
+          wood:'English Willow - Grade 1 Supreme',weight:'1.18–1.20 kg',
+          grip:'Chevron Gold Grip',length:'86.5 cm',
+          desc:'Our flagship model. The Sg Sunny 70 Years is reserved for those who accept nothing but the absolute best.'
+        })">
+          <div class="bat-overlay"><button class="btn-quick-view">Quick View</button></div>
+          <div class="bat-img-wrap">
+            <div class="bat-badge">Limited Edition</div>
+            <img src="sunny 70.webp" alt="Sg Sunny 70 Years" />
+          </div>
+          <div class="bat-info">
+            <div class="bat-grade">Grade 1 Supreme Willow</div>
+            <div class="bat-name">Sg Sunny 70 Years</div>
+            <div class="bat-specs">Flagship edition · Chevron grip · Limited stock</div>
+            <div class="bat-footer">
+              <div class="bat-price"><span class="currency">₹</span>52,000</div>
+              <button class="btn-add-cart ripple-btn" onclick="event.stopPropagation();addToCart('Sg Sunny 70 Years',52000,'sunny 70.webp','Grade 1 Supreme Willow')">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="text-center mt-5 fade-up">
+      <a href="collection.html" class="btn-outline-gold ripple-btn"><span>View Full Collection</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ TESTIMONIALS ══════════ -->
+<section class="testimonials">
+  <div class="container">
+    <div class="text-center mb-5 fade-up">
+      <p class="section-label">Player Reviews</p>
+      <h2 class="section-title">Trusted by <em>Champions</em></h2>
+      <div class="gold-divider"></div>
+    </div>
+    <div class="row g-4">
+      <div class="col-md-4 fade-up">
+        <div class="testimonial-card">
+          <div class="stars">★★★★★</div>
+          <p class="testimonial-text">The Bats provided completely transformed my game. The pick-up feels absolutely phenomenal — lightest bat I've held that still packs serious power.</p>
+          <div class="testimonial-author">Abhimanyu Easwaran</div>
+          <div class="testimonial-role">State-Level Cricketer · Bengal</div>
+        </div>
+      </div>
+      <div class="col-md-4 fade-up">
+        <div class="testimonial-card">
+          <div class="stars">★★★★★</div>
+          <p class="testimonial-text">I've used bats from every major brand. CHAUHAN's craftsmanship is in a league of its own. The grain quality on my bat is breathtaking.</p>
+          <div class="testimonial-author">Harleen Deol</div>
+          <div class="testimonial-role">International Women's Cricketer</div>
+        </div>
+      </div>
+      <div class="col-md-4 fade-up">
+        <div class="testimonial-card">
+          <div class="stars">★★★★★</div>
+          <p class="testimonial-text">From ordering to delivery — an unmatched premium experience. The bat arrived with a hand-written note from the master craftsman. Incredible touch.</p>
+          <div class="testimonial-author">Ruturaj Gaikwad</div>
+          <div class="testimonial-role">Captain · CSK,Maharashtra</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ CTA BANNER ══════════ -->
+<section class="cta-banner">
+  <div class="container fade-up">
+    <p class="section-label">Limited Stock Available</p>
+    <h2 class="section-title mb-4">Ready to Play Like<br>a <em>Champion?</em></h2>
+    <div class="gold-divider"></div>
+    <p class="mt-4 mb-5" style="color:var(--muted);max-width:500px;margin-inline:auto;line-height:1.8;font-size:0.88rem;">
+      Every bat is individually checked, pressed, and certified before leaving our workshop. 
+      Your championship starts here.
+    </p>
+    <div class="d-flex justify-content-center gap-3 flex-wrap">
+      <a href="collection.html" class="btn-gold ripple-btn"><span>Shop Now</span></a>
+      <a href="contact.html" class="btn-outline-gold ripple-btn"><span>Contact Us</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ FOOTER ══════════ -->
+<footer>
+  <div class="container">
+    <div class="row g-5">
+      <div class="col-lg-4">
+        <div class="footer-brand">CHAUHAN<span> Sporting</span></div>
+        <div class="footer-tagline mb-4">Crafted for Champions · Est. 1998</div>
+        <p style="font-size:0.82rem;color:var(--muted);line-height:1.8;max-width:300px;">
+          Handcrafted premium cricket bats from the finest English willow. 
+          Your game deserves the best.
+        </p>
+        <div class="mt-4">
+          <a href="https://www.instagram.com/_.chauhan._111/" target="_blank" class="social-icon"><i class="bi bi-instagram"></i></a>
+              <a href="https://www.facebook.com/" target="_blank" class="social-icon"><i class="bi bi-facebook"></i></a>
+              <a href="https://www.linkedin.com/in/shivanand-singh-827114405/" target="_blank" class="social-icon"><i class="bi bi-linkedin"></i></a>
+              <a href="https://www.youtube.com/@chennaiipl" target="_blank" class="social-icon"><i class="bi bi-youtube"></i></a>
+         </div>
+      </div>
+      <div class="col-6 col-lg-2 footer-links">
+        <h6>Navigation</h6>
+        <a href="index.html">Home</a>
+        <a href="about.html">About Us</a>
+        <a href="collection.html">Collection</a>
+        <a href="contact.html">Contact</a>
+        <a href="login.html">Login</a>
+      </div>
+      <div class="col-6 col-lg-3 footer-links">
+        <h6>Collection</h6>
+        <a href="collection.html">English Willow Bats</a>
+        <a href="collection.html">Kashmir Willow</a>
+        <a href="collection.html">Limited Editions</a>
+        <a href="collection.html">Junior Range</a>
+      </div>
+      <div class="col-lg-3 footer-links">
+        <h6>Contact</h6>
+        <a href="#"><i class="bi bi-geo-alt me-2"></i>12 Bat-maker's Lane, Jamshedpur, Jharkhand</a>
+        <a href="#"><i class="bi bi-telephone me-2"></i>+91 12091 11718</a>
+        <a href="#"><i class="bi bi-envelope me-2"></i>info@chauhansporting.com</a>
+      </div>
+    </div>
+    <div class="footer-bottom text-center">
+      <p>© 2026 CHAUHAN Sporting. All Rights Reserved. Premium Cricket Bats. Made in India.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- Bat Detail Modal -->
+<div class="modal fade bat-modal" id="batModal" tabindex="-1">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"></h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body p-4">
+        <div class="row g-4">
+          <div class="col-md-5 text-center" style="background:var(--dark);padding:30px;display:flex;align-items:center;">
+            <img class="modal-bat-img" src="" alt="Bat" />
+          </div>
+          <div class="col-md-7">
+            <div class="modal-bat-grade mb-2" style="font-size:0.65rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--gold)"></div>
+            <div class="modal-price mb-3"></div>
+            <p class="modal-bat-desc mb-4" style="font-size:0.85rem;color:var(--muted);line-height:1.8;"></p>
+            <table class="spec-table mb-4">
+              <tr><td>Wood Type</td><td class="modal-bat-wood"></td></tr>
+              <tr><td>Weight</td><td class="modal-bat-weight"></td></tr>
+              <tr><td>Grip</td><td class="modal-bat-grip"></td></tr>
+              <tr><td>Length</td><td class="modal-bat-length"></td></tr>
+            </table>
+            <button class="btn-gold ripple-btn btn-modal-cart w-100"><span>Add to Cart</span></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Cart Toast -->
+<div class="cart-toast">
+  <i class="bi bi-bag-check-fill"></i>
+  <span class="toast-msg">Item added to cart</span>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="main.js"></script>
+</body>
+</html>
