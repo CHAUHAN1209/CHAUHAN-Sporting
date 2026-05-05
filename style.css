@@ -1130,23 +1130,64 @@ footer {
 }
 
 /* ── Responsive ────────────────────────────────────────────── */
+@media (max-width: 1199px) {
+  .navbar .nav-link { padding: 8px 12px !important; letter-spacing: 0.1em; }
+}
 @media (max-width: 991px) {
   .hero-visual { display: none; }
   .hero h1 { font-size: clamp(2.2rem, 8vw, 3.5rem); }
   .login-left { padding: 40px 30px; }
   .login-card { padding: 40px 30px; }
   .contact-form-wrap { padding: 36px 30px; }
+  .navbar-collapse {
+    background: rgba(17, 17, 17, 0.98);
+    padding: 20px;
+    border-radius: 8px;
+    margin-top: 15px;
+    border: 1px solid rgba(201,168,76,0.15);
+  }
+  .nav-link::after { display: none; }
+  .showcase-img-wrap img { height: 400px; }
+  .page-header { padding: 140px 0 80px; }
+  .footer-links { margin-top: 30px; }
 }
 @media (max-width: 767px) {
-  .hero { min-height: 100svh; }
+  .hero { min-height: 100svh; height: auto; padding: 120px 0 60px; }
+  .hero-bg { background-position: center; }
+  .hero-stadium { background-position: center; }
   .hero-stats { display: none; }
-  .hero-btns { flex-direction: column; align-items: flex-start; }
+  .hero-btns { flex-direction: column; width: 100%; gap: 12px; }
+  .hero-btns a { width: 100%; text-align: center; }
   .bat-img-wrap { height: 220px; }
   .login-left { display: none; }
+  .showcase { padding: 60px 0; }
+  .showcase-img-wrap img { height: 300px; }
+  .testimonials, .cta-banner, .about-intro, .craft-process, .materials, .collection, .contact { padding: 60px 0; }
+  section[style*="padding:100px"], section[style*="padding:60px"] { padding: 60px 0 !important; }
+  footer { padding: 50px 0 30px; }
+  .btn-gold, .btn-outline-gold { padding: 12px 24px; }
+  .process-step { flex-direction: column; gap: 12px; }
+  .step-num { font-size: 2.5rem; }
+  .contact-info-item { flex-direction: column; gap: 12px; align-items: center; text-align: center; }
+  .about-img img { height: 400px; }
+  .about-year { font-size: 5rem; }
+  .login-page { padding: 100px 0 40px; }
+  .stat-num { font-size: clamp(1.8rem, 4vw, 2.5rem); }
+  .filter-bar { display: flex; flex-wrap: wrap; justify-content: center; }
 }
 @media (max-width: 576px) {
-  .section-title { font-size: 1.8rem; }
-  .hero h1 { font-size: 2.2rem; }
+  .section-title { font-size: 1.8rem !important; }
+  .hero h1 { font-size: 2.2rem !important; margin-bottom: 15px; }
+  .hero-sub { font-size: 0.95rem; margin-bottom: 30px; }
+  .loader-brand { font-size: 1.5rem; }
+  .feature-icon { font-size: 1.5rem; }
+  .feature-title { font-size: 0.9rem; }
+  .feature-desc { font-size: 0.7rem; }
+  .footer-brand { font-size: 1.2rem; }
+  .showcase-img-wrap img { height: 250px; }
+  .modal-bat-img { height: 200px; }
+  .bat-info { padding: 20px; }
+  .about-img img { height: 300px; }
 }
 
 .bat-img-wrap {
