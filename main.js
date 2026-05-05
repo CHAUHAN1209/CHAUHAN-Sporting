@@ -244,12 +244,28 @@ document.addEventListener('DOMContentLoaded', () => {
         const btn = this.querySelector('[type="submit"]');
         btn.disabled = true;
         btn.innerHTML = '<span>Sending...</span>';
-        setTimeout(() => {
+
+        const formData = new FormData(this);
+        fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
           btn.disabled = false;
           btn.innerHTML = '<span>Send Message</span>';
-          showContactSuccess();
-          contactForm.reset();
-        }, 1800);
+          if (data.success) {
+            showContactSuccess();
+            contactForm.reset();
+          } else {
+            alert('Something went wrong. Please try again.');
+          }
+        })
+        .catch(error => {
+          btn.disabled = false;
+          btn.innerHTML = '<span>Send Message</span>';
+          alert('Something went wrong. Please try again.');
+        });
       }
     });
   }
