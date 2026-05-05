@@ -368,8 +368,29 @@
 
     @media (max-width: 767px) {
       .summary-box { position: static; margin-top: 1.5rem; }
-      .cart-item-total { min-width: 60px; font-size: .88rem; }
-      .cart-item-row { flex-wrap: wrap; }
+      .cart-item-row { 
+        flex-wrap: wrap; 
+        padding: 1rem; 
+        gap: 1rem; 
+      }
+      .cart-item-thumb, .cart-item-thumb-placeholder {
+        width: 60px; height: 60px;
+      }
+      .cart-item-info {
+        flex: 1 1 calc(100% - 80px); /* Image width + gap */
+      }
+      .cart-item-name {
+        white-space: normal; /* Prevents text from being cut off */
+        font-size: 0.95rem;
+      }
+      .qty-wrap {
+        margin-left: calc(60px + 1rem); /* Align with text */
+      }
+      .cart-item-total { 
+        min-width: auto; 
+        font-size: 0.95rem; 
+        margin-left: auto;
+      }
     }
 
     /* Fallback for btn-gold if style.css is unavailable */
